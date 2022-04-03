@@ -22,7 +22,6 @@ export function objectFieldsList(obj1, obj2, obj3) {
         .concat(Object.keys(obj2))
         .concat(Object.keys(obj3));
     return result.sort();
-    //for (let i = 0; i < keys.length; i++) {}
 }
 
 /*
