@@ -9,8 +9,9 @@ import cloneDeep from 'lodash.clonedeep';
   Объект после манипуляций следует вернуть в качестве результата работы функции.
 */
 export function personUpdate(data) {
-    if (data.gender == 'female') delete data.age;
-    if (data.gender == 'male' && data.income == undefined) data.income = 100000;
+    if (data.gender === 'female') delete data.age;
+    if (data.gender === 'male' && data.income === undefined)
+        data.income = 100000;
     return data;
 }
 
