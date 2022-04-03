@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash.clonedeep';
 /*
   В функцию personUpdate() приходят данные в виде объекта, содержащую некую информацию о человеке.
   Если этот человек является женщиной (свойство gender содержит значение 'female'), то из этого объекта
@@ -8,6 +9,10 @@
   Объект после манипуляций следует вернуть в качестве результата работы функции.
 */
 export function personUpdate(data) {
+    if (data.gender === 'female') delete data.age;
+    if (data.gender === 'male' && data.income === undefined)
+        data.income = 100000;
+    return data;
 }
 
 /*
@@ -15,6 +20,10 @@ export function personUpdate(data) {
   Верните список названий этих полей в алфавитном порядке в виде массива строк.
 */
 export function objectFieldsList(obj1, obj2, obj3) {
+    let result = Object.keys(obj1)
+        .concat(Object.keys(obj2))
+        .concat(Object.keys(obj3));
+    return result.sort();
 }
 
 /*
@@ -22,5 +31,11 @@ export function objectFieldsList(obj1, obj2, obj3) {
   При этом каждый клон должен дополнительно содержать поле id со своим порядковым номером в массиве.
   Количество клонов - count.
 */
+
 export function objectClone(obj, count) {
+    let result = [];
+    for (let i = 0; i < count; i++) {
+        result[i] = cloneDeep({ id: i, ...obj });
+    }
+    return result;
 }
